@@ -6,6 +6,7 @@
 
 # add the markdown files to percentage bar
 *.toml linguist-detectable
+*.md linguist-detectable
 
 # prevent git from processing images as text
 *.png binary

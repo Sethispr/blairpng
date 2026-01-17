@@ -1,0 +1,7 @@
+-   id: blairpng
+    name: blairpng
+    description: 'Blair png card compressor written in Rust.'
+    entry: blairpng
+    language: rust
+    types: [png]
+    require_serial: true

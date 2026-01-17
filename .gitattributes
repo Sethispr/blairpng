@@ -1,0 +1,13 @@
+* text=auto
+
+*.rs text eol=lf
+*.toml text eol=lf
+*.md text eol=lf
+
+# add the markdown files to percentage bar
+*.toml linguist-detectable
+
+# prevent git from processing images as text
+*.png binary
+*.webp binary
+*.gif binary

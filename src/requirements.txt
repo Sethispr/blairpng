@@ -1,0 +1,2 @@
+oxipng
+tqdm

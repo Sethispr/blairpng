@@ -1,0 +1,7 @@
+level = 6
+strip_metadata = true
+optimize_alpha = true
+fast_eval = false
+filters = ["none", "sub", "up", "average", "paeth"]
+deflater = "libdeflate"
+deflate_level = 12

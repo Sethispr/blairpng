@@ -1,0 +1,30 @@
+[package]
+name = "blairpng"
+version = "0.1.0"
+edition = "2021"
+authors = ["sethispr"]
+readme = "README.md"
+repository = "https://github.com/sethispr/blair-utils"
+description = "Blair’s cli for compressing .png cards"
+keywords = ["terminal", "utility", "png", "optimization"]
+categories = ["command-line-interface"]
+license = "BSL-1.0"
+
+[profile.release]
+opt-level = 3
+lto = true
+codegen-units = 1
+
+[dependencies]
+clap = { version = "4.4", features = ["derive"] }
+oxipng = "9.1.2"
+rayon = "1.8"
+serde = { version = "1.0", features = ["derive"] }
+toml = "0.8"
+indicatif = "0.17"
+anyhow = "1.0"
+indexmap = "2.1"
+
+[[bin]]
+name = "blairpng"
+path = "src/main.rs"

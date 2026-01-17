@@ -1,0 +1,44 @@
+[MASTER]
+rcfile=
+ignore=__pycache__
+
+[MESSAGES CONTROL]
+disable=
+    missing-module-docstring,
+    missing-class-docstring,
+    missing-function-docstring,
+    too-few-public-methods,
+    no-member,
+    attribute-defined-outside-init,
+    import-error,
+    broad-except
+
+[REPORTS]
+reports=no
+score=yes
+
+[BASIC]
+good-names=i,j,k,ex,Run,bot,ctx
+
+[DESIGN]
+max-args=8
+max-attributes=15
+
+[FORMAT]
+max-line-length=150
+
+[TYPECHECK]
+generated-members=discord.*,commands.*
+
+[LOGGING]
+logging-format-style=old
+
+[VARIABLES]
+const-rgx=(([a-z_][a-z0-9_]*)|(__.*__))$
+
+[SIMILARITIES]
+ignore-comments=yes
+ignore-docstrings=yes
+ignore-imports=yes
+ignore-signatures=yes
+min-similarity-lines=6

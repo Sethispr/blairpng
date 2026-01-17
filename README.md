@@ -116,3 +116,27 @@ Blair in the future may shift from using .png cards and use .webp instead for mo
 Lossy .webp compression is also really effective, with quality=100 settings it still retains the resolution and just some really tiny parts or useless detail changed colors but really no visual changes on the image. 
 
 It is very possible now to get an impressive average img size of 211kb for even a high quality card in blair with same 725x1040 dimensions.
+
+### Comparing image sizes
+
+Blair without compressing avg 1.03mb, 725x1040
+
+Blair baseline (oxipng) avg 718kb, 725x1040 (CURRENT)
+
+Blair (cwebp webp lossless) avg 523kb, 725x1040
+
+Blair (lanczos3 resize) avg 278kb, 363x520
+
+Blair (cwebp webp lossy q=100) avg 211kb, 725x1040 ❗️
+
+All the other tcg bots most likely uses resizing from photoshop itself but its lossy and low res, their upscaling however is definetly decent and maximized (blair only uses waifu2x not the real-ESRGAN model).
+
+If blair uses .webp one day it'll be very compressed (211kb) but still will be high same exact resolutions as original. 
+
+This however introduces more computation time as blair relies on the Pillow-SIMD library which is more optimized for png files. Also more code is needed for making the webp compressor etc. Squoosh.app exists which is good but does not support batch compress.
+
+Nairi avg 377 kb per card, 376x592
+
+Gachapon: avg 183 kb per card, 290x416
+
+Lumina: avg 300 kb per card, 389x553

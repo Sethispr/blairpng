@@ -8,9 +8,6 @@ updates:
     commit-message:
       prefix: "chore"
       include: "scope"
-    labels:
-      - "dependencies"
-      - "rust"
     groups:
       rust-dependencies:
         patterns:

@@ -1,0 +1,13 @@
+# .markdownlint.yaml
+# config for https://github.com/DavidAnson/markdownlint
+
+default: false
+
+line-length: false              # MD013: So it can shut up
+no-inline-html: false           # MD033: For <div> containers, etc
+first-line-heading: false       # MD041: So it can shut up
+
+no-trailing-spaces: true        # MD009: Keep file clean
+no-multiple-blanks: true        # MD012: Prevents empty lines by accident
+no-hard-tabs: true              # MD010: Spaces > Tabs for consistency
+no-bare-urls: true              # MD034: Links always clickable

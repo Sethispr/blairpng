@@ -4,8 +4,7 @@
 *.toml text eol=lf
 *.md text eol=lf
 
-# add the markdown and toml files to percentage bar
-*.md linguist-detectable=true
+# add toml files to percentage bar
 *.toml linguist-detectable
 
 # prevent git from processing images as text

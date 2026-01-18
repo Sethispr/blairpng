@@ -6,9 +6,9 @@
 
 ## Blair Studio v0.5.0 (Website)
 
-Cardmakers can also use [Blair Studio](https://blairstudio.pages.dev/) to automatically compress PNGs directly in your browser.
+Cardmakers can also use [Blair Studio](https://blairstudio.pages.dev/) to automatically compress PNGs when submitting cards and all directly in your browser.
 
-Blair Studio uses the same oxipng optimization (level 6) when you frame and submit cards to our Discord #content channel, no installing is needed.
+Blair Studio uses the same oxipng optimization (level 6) when you frame and submit cards to our Discord #content channel, no rust installation is needed.
 
 ## Installation (if using the cli)
 

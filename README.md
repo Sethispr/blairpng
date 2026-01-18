@@ -20,7 +20,7 @@ You can get the pre built binary `.exe` from [GitHub Releases](https://github.co
 cargo install blairpng
 ```
 
-### Build from source (windows)
+### Build from source (Windows only)
 
 [Install Rust](https://rustup.rs/) and [Git](https://git-scm.com/install/windows) first, then:
 

@@ -1,4 +1,4 @@
-<p align="center">A simple, fast, lossless PNG optimizer for Blair cardmakers</p>
+<p align="center">A simple, fast, lossless PNG optimizer for Blair</p>
 
 <img align="center" src="https://cdn.jsdelivr.net/gh/Sethispr/blair-top.gg/assets/blairshowcasenowgoplayblairorelse.webp" alt="Blair cards showcase"></img>
 

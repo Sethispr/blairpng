@@ -4,15 +4,25 @@
 
 ---
 
-## Installation
+## Blair Studio v0.5.0 (Auto Compression)
 
-### From Cargo (soon)
+Cardmakers can also use [Blair Studio](https://blairstudio.pages.dev/) to automatically compress PNGs directly in your browser.
+
+Blair Studio uses the same oxipng optimization (level 6) when you frame and submit cards to our Discord #content channel, no installing is needed.
+
+## Installation (if using the cli)
+
+You can get the pre built binary `.exe` from [GitHub Releases](https://github.com/sethispr/blairpng/releases) and run it directly, no Rust installation required.
+
+### From Cargo
 
 ```bash
 cargo install blairpng
 ```
 
-### Build from source
+### Build from source (windows)
+
+[Install Rust](https://rustup.rs/) and [Git](https://git-scm.com/install/windows) first, then:
 
 ```bash
 git clone https://github.com/sethispr/blairpng.git

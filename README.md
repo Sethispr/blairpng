@@ -1,6 +1,6 @@
 <img align="center" src="https://cdn.jsdelivr.net/gh/Sethispr/blair-top.gg/assets/blairshowcasenowgoplayblairorelse.webp" alt="Blair cards showcase banner"></img>
 
-<p align=center>Blair's card lossless compressor built in idiomatic Rust, fast multithreaded with compile time ownership guarantees.</p>
+<p align=center>Blair's card lossless compressor built in Rust, fast multithreaded with compile time ownership guarantees.</p>
 
 ## Installing
 

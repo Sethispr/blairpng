@@ -1,142 +1,130 @@
-<img align="center" src="https://cdn.jsdelivr.net/gh/Sethispr/blair-top.gg/assets/blairshowcasenowgoplayblairorelse.webp" alt="Blair cards showcase banner"></img>
+<img align="center" src="https://cdn.jsdelivr.net/gh/Sethispr/blair-top.gg/assets/blairshowcasenowgoplayblairorelse.webp" alt="Blair cards showcase"></img>
 
-<p align=center>A simple, fast and lossless PNG optimizer for Blair cardmakers</p>
+<p align="center">A simple, fast, lossless PNG optimizer for Blair cardmakers</p>
 
-## Installing
+---
 
-### From Cargo
+## Installation
+
+### From Cargo (soon)
 
 ```bash
-cargo install blairpng (soon)
+cargo install blairpng
 ```
 
-### Build from source (make sure to use --release)
+### Build from source
 
 ```bash
 git clone https://github.com/sethispr/blairpng.git
 cd blairpng
 cargo build --release
-cargo run --release
+cargo install --path .
 ```
+
+---
 
 ## Usage
 
-Run blairpng on a directory containing .png files:
+Optimize PNG's in a directory:
 
 ```bash
-blairpng [OPTIONS (optional)] [DIRECTORY PATH]
+blairpng [OPTIONS] [DIRECTORY]
 ```
 
-If no directory is put, it uses the current directory.
+If no directory is specified, blairpng uses the current directory.
 
-### Some examples
+### Examples
 
-- Optimize all png files in the current folder with default settings:
+**Basic usage** - optimize current folder with defaults:
+```bash
+blairpng
+```
 
-  ```bash
-  blairpng
-  ```
+**Optimize specific folder:**
+```bash
+blairpng ./cards
+```
 
-- Highest compression without deflating stuff etc (level 6 is default too and recommended)
+**Verbose output** - see per-file savings:
+```bash
+blairpng --verbose
+```
 
-  ```bash
-  blairpng -l 6
-  ```
+**Custom config:**
+```bash
+blairpng --config settings.toml ./cards
+```
 
-- Verbose output to see savings for each png
+**Generate example config:**
+```bash
+blairpng --init
+```
 
-  ```bash
-  blairpng --verbose
-  ```
+**See all options:**
+```bash
+blairpng --help
+```
 
-- Use a custom config file
+---
 
-  ```bash
-  blairpng --config wow.toml /path/to/cards
-  ```
+## Options
 
-- Generate an example config file
+- `[DIRECTORY]` - Path to PNG files (default: current directory)
+- `-l, --level <0-6>` - Compression level, higher = better but slower (default: 6)
+- `-j, --threads <N>` - Number of threads (default: all cores)
+- `-q, --quiet` - Hide progress bar
+- `-v, --verbose` - Show compression stats per file
+- `-c, --config <PATH>` - Custom config file path
+- `--init` - Generate `blair.toml` example config
 
-  ```bash
-  blairpng --init
-  ```
+---
 
-- Help menu for these options below
+## Configuration
 
-  ```bash
-  blairpng --help
-  ```
+blairpng works great with defaults, but you can customize settings via `blair.toml`.
 
-### Options
+Generate example config:
+```bash
+blairpng --init
+```
 
-- `directory`: Directory with `.png` files (default: current directory)
-- `-l, --level <0-6>`: Optimization preset level (higher = better compression but slower, default: 6)
-- `-j, --threads <N>`: Number of threads (default: all available cores)
-- `--quiet`: Hide the progress bar
-- `--verbose`: Print detailed logs for every png
-- `--config <path>`: Path to custom `blair.toml` config
-- `--init`: Generate an example `blair.toml` in the current directory
-
-## Configs (blair.toml)
-
-blairpng is already filled with good defaults (you can just run `blairpng [card folder path]`, but you can change them with the optional `blair.toml` in the working directory or set it via `--config [path]`.
-
-Example config (`blairpng --init` will generate you this)
-
+Example `blair.toml`:
 ```toml
-# Blair Example Config
-# Best lossless compression but fastest possible settings by default
-level = 6
-strip_metadata = true
-optimize_alpha = true
-fast_eval = false
+level = 6                  # Compression level (0-6)
+strip_metadata = true      # Remove unnecessary metadata
+optimize_alpha = true      # Optimize transparent pixels
+fast_eval = false          # Faster but less thorough
+
+# Row filters to try (more = slower but better compression)
 filters = ["none", "sub", "up", "average", "paeth", "minsum", "bigrams"]
-deflater = "libdeflater"
-deflate_level = 12
+
+# Compression backend
+deflater = "libdeflate"    # "libdeflate" (fast) or "zopfli" (slower, better)
+deflate_level = 12         # 1-12 for libdeflate, 1-255 for zopfli
 ```
 
-Options:
+### Config Options
 
-- `level`: Default comoression level (higher = more compressed but slower) (0-6)
-- `strip_metadata`: Remove useless metadata (true = safe strip)
-- `optimize_alpha`: Optimize the transparent pixels for better compression
-- `fast_eval`: Faster but less thorough filter evaluation
-- `filters`: List of row filters to try (strings matching oxipng's RowFilter)
-- `deflater`: `"libdeflater"` (fast) or `"zopfli"` (better compression but much slower)
-- `deflate_level`: Compression effort (1-12 for libdeflater, 1-255 for zopfli)
+| Option | Description | Default |
+|--------|-------------|---------|
+| `level` | Optimization preset (0-6) | `6` |
+| `strip_metadata` | Remove non-essential chunks | `true` |
+| `optimize_alpha` | Optimize transparency | `true` |
+| `fast_eval` | Faster filter evaluation | `false` |
+| `filters` | Row filters to test | See above |
+| `deflater` | Compression backend | `"libdeflate"` |
+| `deflate_level` | Compression effort | `12` |
 
-Uses [`oxipng`](https://github.com/oxipng/oxipng), [`zopfli`](https://github.com/google/zopfli) and [`libdeflate`](https://github.com/ebiggers/libdeflate)
+---
 
-Blair's average card size is around 718kb per card as its baseline after using all of blairpng optimizations for max compression.
+## Performance
 
-Blairpng compression can give you around -20 to 30% reduced image file size and on average takes less than 3 minutes for 100 card images even with only 1 core with a potato laptop being used.
+Typical results on Blair cards (725x1040 resolution):
+- **Before:** ~1.03 MB average
+- **After:** ~718 KB average
+- **Savings:** ~30% reduction
+- **Speed:** ~100 cards in under 3 minutes (single core)
 
-Blair in the future may shift from using .png cards and use .webp instead for more modern compression and its lossless too.
+Uses [oxipng](https://github.com/shssoichiro/oxipng), [libdeflate](https://github.com/ebiggers/libdeflate), and [zopfli](https://github.com/google/zopfli).
 
-Lossy .webp compression is also really effective, with quality=100 settings it still retains the resolution and just some really tiny parts or useless detail changed colors but really no visual changes on the image. 
-
-It is very possible now to get an impressive average img size of 211kb for even a high quality card in blair with same 725x1040 dimensions.
-
-### Comparing image sizes
-
-Blair without compressing avg 1.03mb, 725x1040
-
-Blair baseline (oxipng) avg 718kb, 725x1040 (CURRENT)
-
-Blair (cwebp webp lossless) avg 523kb, 725x1040
-
-Blair (lanczos3 resize) avg 278kb, 363x520
-
-Blair (cwebp webp lossy q=100) avg 211kb, 725x1040 ❗️
-
-All the other tcg bots most likely uses resizing from photoshop itself but its lossy and low res, their upscaling however is definetly decent and maximized (blair only uses waifu2x not the real-ESRGAN model).
-
-If blair uses .webp one day it'll be very compressed (211kb) but still will be high same exact resolutions as original. 
-
-This however introduces more computation time as blair relies on the Pillow-SIMD library which is more optimized for png files. Also more code is needed for making the webp compressor etc. Squoosh.app exists which is good but does not support batch compress.
-
-Nairi avg 377 kb per card, 376x592
-
-Gachapon: avg 183 kb per card, 290x416
-
-Lumina: avg 300 kb per card, 389x553
+---

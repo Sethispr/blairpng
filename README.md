@@ -132,8 +132,8 @@ deflate_level = 12         # 1-12 for libdeflate, 1-255 for zopfli
 Typical results on Blair cards (725x1040 resolution):
 - **Before:** ~1.03 MB average
 - **After:** ~718 KB average
-- **Savings:** ~30% reduction
-- **Speed:** ~100 cards in under 3 minutes (single core)
+- **Savings:** ~20-30% reduction
+- **Speed:** Compress ~100 cards in under 3 minutes (single cpu core, compress level=6)
 
 Uses [oxipng](https://github.com/shssoichiro/oxipng), [libdeflate](https://github.com/ebiggers/libdeflate), and [zopfli](https://github.com/google/zopfli).
 

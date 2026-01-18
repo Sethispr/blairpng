@@ -4,7 +4,7 @@
 
 ---
 
-## Blair Studio v0.5.0 (Auto Compression)
+## Blair Studio v0.5.0 (Website)
 
 Cardmakers can also use [Blair Studio](https://blairstudio.pages.dev/) to automatically compress PNGs directly in your browser.
 

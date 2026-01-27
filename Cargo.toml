@@ -17,7 +17,7 @@ codegen-units = 1
 
 [dependencies]
 clap = { version = "4.4", features = ["derive"] }
-oxipng = "9.1.2"
+oxipng = "10.0.0"
 rayon = "1.8"
 serde = { version = "1.0", features = ["derive"] }
 toml = "0.9"
